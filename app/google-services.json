@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "248857995469",
+    "firebase_url": "https://fir-prac-8d619.firebaseio.com",
+    "project_id": "fir-prac-8d619",
+    "storage_bucket": "fir-prac-8d619.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248857995469:android:0126345b49549003ebe184",
+        "android_client_info": {
+          "package_name": "pk.edu.pucit.firebaseProj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248857995469-pdfjcs8nn25v6ttifi4fnuqo6adrme3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAThHuE-WhsoCYzE1YEkwEkuks--0fLkfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248857995469-pdfjcs8nn25v6ttifi4fnuqo6adrme3f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
