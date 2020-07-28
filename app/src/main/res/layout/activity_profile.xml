@@ -6,29 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-
-    <TextView
-        android:id="@+id/textView"
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Welcome to Your Profile"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textColor="@color/colorPrimary" />
+        android:id="@+id/progress_circle"
+        android:layout_centerInParent="true"
+        />
 
-
-    <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="120dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:text="Logout"
-        android:textAllCaps="false"
-        android:textColor="#ffffff" />
+        android:layout_centerHorizontal="true"></androidx.recyclerview.widget.RecyclerView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/floatingButton"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_logout"
+        app:backgroundTint="#fff"
+        app:rippleColor="#fff"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingButton"
         android:layout_width="wrap_content"

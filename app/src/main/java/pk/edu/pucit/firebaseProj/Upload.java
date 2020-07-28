@@ -9,6 +9,14 @@ public class Upload {
     {
         //empty constructor;
     }
+//
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setId(String id) {
+//        this.id = id;
+//    }
 
     public Upload(String name, String email, String imageUrl)
     {
