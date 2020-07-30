@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
@@ -37,7 +36,7 @@ public class addPerson extends AppCompatActivity {
     private Uri mImageUri;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
-    private StorageTask mUploadTask;
+    private Task<Uri> mUploadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +62,7 @@ public class addPerson extends AppCompatActivity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mUploadTask != null && mUploadTask.isInProgress()) {
+                if (mUploadTask != null && !mUploadTask.isSuccessful()) {
                     Toast.makeText(addPerson.this, "Upload in Progress", Toast.LENGTH_SHORT).show();
                 } else {
                       addData();
@@ -99,9 +98,10 @@ public class addPerson extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
     private void addData(){
-        findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
+
         if(!editTextEmail.getText().toString().trim().equals("") && !editTextName.getText().toString().trim().equals("") && mImageUri !=null )
         {
+            findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
             final StorageReference fileRef= mStorageRef.child(System.currentTimeMillis()+"."+getFileExtension(mImageUri));
 //           mUploadTask= fileRef.putFile(mImageUri)
 //                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -141,7 +141,7 @@ public class addPerson extends AppCompatActivity {
 //            }
 //        });
             //-----------METHOD 2----------------------SUCCESSFUL
-           fileRef.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+           mUploadTask=fileRef.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                     if (!task.isSuccessful()) {
@@ -185,8 +185,13 @@ public class addPerson extends AppCompatActivity {
             }
         }
 
+    }
 
+    @Override
+    public void onBackPressed() {
 
-
+        Intent intent = new Intent(addPerson.this,ProfileActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

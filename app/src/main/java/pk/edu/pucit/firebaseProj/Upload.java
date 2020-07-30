@@ -1,22 +1,25 @@
 package pk.edu.pucit.firebaseProj;
 
+import com.google.firebase.database.Exclude;
+
 public class Upload {
     private String mName;
     private String mEmail;
     private String mImageUri;
+    private String mKey;
 
     public Upload()
     {
         //empty constructor;
     }
-//
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
+    @Exclude
+    public String getKey() {
+        return mKey;
+    }
+    @Exclude
+    public void setKey(String mKey) {
+        this.mKey = mKey;
+    }
 
     public Upload(String name, String email, String imageUrl)
     {
